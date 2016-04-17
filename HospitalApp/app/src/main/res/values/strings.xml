@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Clinic</string>
+    <string name="labelDatos">Datos del paciente</string>
+    <string name="labelDocumento">Digite documento...</string>
+    <string name="labelApellidos">Apellidos</string>
+    <string name="labelNombres">Nombres</string>
+    <string name="labelDireccion">Dirección</string>
+    <string name="btnBuscar">Buscar</string>
+    <string name="btnServicios">Seleccionar servicios</string>
+    <string name="title_activity_servicios">ServiciosActivity</string>
+    <string name="btnCalcularCosto">Calcular costo</string>
+    <string name="btnGenerarRecibo">Generar recibo</string>
+</resources>
