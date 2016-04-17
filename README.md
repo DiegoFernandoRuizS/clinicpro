@@ -1,1 +1,1 @@
-# clinicpro
+# clinicpro - maven project
