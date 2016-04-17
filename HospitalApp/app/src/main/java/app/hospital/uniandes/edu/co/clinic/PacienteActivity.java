@@ -1,7 +1,6 @@
 package app.hospital.uniandes.edu.co.clinic;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,30 +9,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 import app.hospital.uniandes.edu.co.clinic.dtos.PersonDTO;
-import app.hospital.uniandes.edu.co.clinic.http.HttpRequest;
-import app.hospital.uniandes.edu.co.clinic.http.HttpRequest.HttpRequestException;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-
+import app.hospital.uniandes.edu.co.clinic.rest.ConsumeRestPaciente;
+import app.hospital.uniandes.edu.co.clinic.rest.ConsumeRestServicio;
 
 
 public class PacienteActivity extends AppCompatActivity {
 
-    Button btnBuscar;
-    Button btnServicios;
-    EditText editTextDocumento;
-    EditText editTextApellidos;
-    EditText editTextNombres;
-    EditText editTextDireccion;
+    PersonDTO myPerson;
+    private Button btnBuscar;
+    private Button btnServicios;
+    public static EditText editTextDocumento;
+    public static EditText editTextApellidos;
+    public static EditText editTextNombres;
+    public static EditText editTextDireccion;
+    public static ArrayList<String> nombresServicios = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +48,14 @@ public class PacienteActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Hola " + editTextDocumento.getText().toString(),
+                Toast.makeText(getApplicationContext(), "Buscando.. " + editTextDocumento.getText().toString(),
                         Toast.LENGTH_LONG).show();
-
-                int numero=Integer.parseInt(editTextDocumento.getText().toString());
+                int numero = Integer.parseInt(editTextDocumento.getText().toString());
                 //Consumiendo el servicio REST
                 String url = String.format(
                         // "http://localhost:8080/hospital.logic/api/persons/",numero);
                         "http://10.0.2.2:8080/hospital.logic/api/persons/" + numero, numero);
-                new consumeRest().execute(url);
+                new ConsumeRestPaciente().execute(url);
             }
         });
 
@@ -71,57 +63,21 @@ public class PacienteActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                int numero = 0;
+
+                String url = String.format(
+                        // "http://localhost:8080/hospital.logic/api/persons/",numero);
+                        "http://10.0.2.2:8080/hospital.logic/api/services/", numero);
+                new ConsumeRestServicio().execute(url);
+
                 Toast.makeText(getApplicationContext(), "Ir a los servicios ",
                         Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(v.getContext(), ServiciosActivity.class);
                 intent.putExtra("documento", editTextDocumento.getText().toString());
                 intent.putExtra("nombres", editTextNombres.getText().toString());
+                intent.putStringArrayListExtra("array",nombresServicios);
                 startActivity(intent);
             }
         });
-
-    }
-
-    private class consumeRest extends AsyncTask<String, Long, String> {
-        protected String doInBackground(String... urls) {
-            try {
-                return HttpRequest.get(urls[0]).accept("application/json")
-                        .body();
-            } catch (HttpRequest.HttpRequestException exception) {
-                return null;
-            }
-        }
-
-        protected void onPostExecute(String response) {
-            System.out.println("------------------------------");
-            System.out.println(response);
-            PersonDTO person = getPersons(response);
-            Toast.makeText(getApplicationContext(), "... "+person,
-                    Toast.LENGTH_LONG).show();
-            System.out.println("Los datos");
-            System.out.println(person.getId());
-            System.out.println(person.getCedula());
-            System.out.println(person.getName());
-            System.out.println(person.getSurname());
-            System.out.println(person.getAddress());
-
-            editTextDireccion.setText(person.getAddress());
-            editTextNombres.setText(person.getName());
-            editTextApellidos.setText(person.getSurname());
-
-        }
-    }
-
-    private PersonDTO getPersons(String json) {
-        Gson gson = new Gson();
-        Type type = new TypeToken<PersonDTO>(){}.getType();
-        return gson.fromJson(json, type);
-    }
-
-    private String prettyfyJSON(String json) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        JsonParser parser = new JsonParser();
-        JsonElement element = parser.parse(json);
-        return gson.toJson(element);
     }
 }

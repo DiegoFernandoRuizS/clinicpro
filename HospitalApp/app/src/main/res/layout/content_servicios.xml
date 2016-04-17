@@ -12,43 +12,113 @@
     tools:context="app.hospital.uniandes.edu.co.clinic.ServiciosActivity"
     tools:showIn="@layout/activity_servicios">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textViewDatos"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerServicios"
-        android:layout_below="@+id/textViewDatos"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:spinnerMode="dropdown" />
+        <!-- 2 columns -->
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btnCalcularCosto"
-        android:id="@+id/btnCosto"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerServicios"
+                android:layout_marginTop="20dp"
+                android:spinnerMode="dropdown"
+                />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btnGenerarRecibo"
-        android:id="@+id/btnGenerar"
-        android:layout_below="@+id/btnCosto"
-        android:layout_alignRight="@+id/btnCosto"
-        android:layout_alignEnd="@+id/btnCosto" />
+        </TableRow>
+
+        <!-- edittext span 2 column -->
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:layout_span="2"
+                android:id="@+id/textViewDatosPaciente"
+                />
+        </TableRow>
+
+        <!-- just draw a red line -->
+        <View
+            android:layout_height="2dip"
+            android:background="#FF0000" />
+
+        <!-- 3 columns -->
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Servicio"
+                android:id="@+id/textViewServicioSeleccionado"
+                />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Costo"
+                android:id="@+id/textViewCosto"
+                />
+
+        </TableRow>
+
+        <!-- display this button in 3rd column via layout_column(zero based) -->
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnCalcularCosto"
+                android:id="@+id/btnCosto"
+                />
+
+
+        </TableRow>
+
+        <!-- display this button in 2nd column via layout_column(zero based) -->
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnGenerarRecibo"
+                android:id="@+id/btnGenerar"
+                />
+
+        </TableRow>
+
+    </TableLayout>
 </RelativeLayout>
