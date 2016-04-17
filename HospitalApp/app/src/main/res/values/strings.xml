@@ -10,4 +10,5 @@
     <string name="title_activity_servicios">ServiciosActivity</string>
     <string name="btnCalcularCosto">Calcular costo</string>
     <string name="btnGenerarRecibo">Generar recibo</string>
+    <string name="hello">Hello</string>
 </resources>

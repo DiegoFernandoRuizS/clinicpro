@@ -77,4 +77,14 @@
         android:layout_below="@+id/editTextDireccion"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pdf"
+        android:id="@+id/pdf"
+        android:layout_below="@+id/btnBuscar"
+        android:layout_toEndOf="@+id/btnBuscar"
+        android:layout_marginTop="87dp" />
 </RelativeLayout>

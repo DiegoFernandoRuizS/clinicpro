@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.hospital.uniandes.edu.co.clinic">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission-sdk-23>
+
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission-sdk-23 android:name="android.permission.INTERNET"></uses-permission-sdk-23>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" ></uses-permission>
@@ -23,6 +30,9 @@
             android:name=".ServiciosActivity"
             android:label="@string/title_activity_servicios"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".PdfActivity"
+            android:label="@string/title_activity_servicios"></activity>
 
     </application>
 
