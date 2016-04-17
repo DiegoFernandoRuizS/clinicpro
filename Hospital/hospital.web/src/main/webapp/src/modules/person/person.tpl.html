@@ -1,0 +1,67 @@
+<div id="editorial-header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#editorial-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Paciente</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="editorial-navbar">
+
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="col-md-12 well">
+    <div class="row">
+        <table class="table table-condensed">
+            <tr>
+                <td>
+                    <label for="documento">Documento</label>
+                </td>
+                <td>
+                    <input class="form-control" placeholder="Número documento...." id="documento"
+                           ng-model="record.cedula">            
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="apellidos">Apellidos</label>
+                </td>
+                <td>
+                    <input class="form-control" placeholder="Apellidos...." id="apellidos"
+                           ng-model="currentRecord.surname" readonly>            
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="nombres">Nombres</label>
+                </td>
+                <td>
+                    <input class="form-control" placeholder="Nombres...." id="nombres"
+                           ng-model="currentRecord.name" readonly>            
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="direccion">Dirección</label>
+                </td>
+                <td>
+                    <input class="form-control" placeholder="direccion...." id="direccion"
+                           ng-model="currentRecord.address" readonly>            
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="btnBuscar" class="btn btn-primary" ng-click="ctrl.getRecord(record)">Buscar</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
