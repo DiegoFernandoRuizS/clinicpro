@@ -55,15 +55,15 @@ public class PacienteActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Hola " + editTextDocumento.getText(),
+                Toast.makeText(getApplicationContext(), "Hola " + editTextDocumento.getText().toString(),
                         Toast.LENGTH_LONG).show();
 
-                int numero=1000;
+                int numero=Integer.parseInt(editTextDocumento.getText().toString());
                 //Consumiendo el servicio REST
                 String url = String.format(
-                        "http://localhost:8080/hospital.logic/api/persons/1000",numero);
+                        // "http://localhost:8080/hospital.logic/api/persons/",numero);
+                        "http://10.0.2.2:8080/hospital.logic/api/persons/" + numero, numero);
                 new consumeRest().execute(url);
-
             }
         });
 
@@ -71,7 +71,6 @@ public class PacienteActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                editTextApellidos.setText("Ruiz Sanchez");
                 Toast.makeText(getApplicationContext(), "Ir a los servicios ",
                         Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(v.getContext(), ServiciosActivity.class);
@@ -82,8 +81,6 @@ public class PacienteActivity extends AppCompatActivity {
         });
 
     }
-
-    public static final String TAG = "co.edu.uniandes.rest.hospital.resources";
 
     private class consumeRest extends AsyncTask<String, Long, String> {
         protected String doInBackground(String... urls) {
@@ -98,16 +95,26 @@ public class PacienteActivity extends AppCompatActivity {
         protected void onPostExecute(String response) {
             System.out.println("------------------------------");
             System.out.println(response);
-          /*  List<PersonDTO> persons = getPersons(response);
-            Toast.makeText(getApplicationContext(), "... "+persons.get(0),
-                    Toast.LENGTH_LONG).show();*/
+            PersonDTO person = getPersons(response);
+            Toast.makeText(getApplicationContext(), "... "+person,
+                    Toast.LENGTH_LONG).show();
+            System.out.println("Los datos");
+            System.out.println(person.getId());
+            System.out.println(person.getCedula());
+            System.out.println(person.getName());
+            System.out.println(person.getSurname());
+            System.out.println(person.getAddress());
+
+            editTextDireccion.setText(person.getAddress());
+            editTextNombres.setText(person.getName());
+            editTextApellidos.setText(person.getSurname());
+
         }
     }
 
-    private List<PersonDTO> getPersons(String json) {
+    private PersonDTO getPersons(String json) {
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<PersonDTO>>() {
-        }.getType();
+        Type type = new TypeToken<PersonDTO>(){}.getType();
         return gson.fromJson(json, type);
     }
 
