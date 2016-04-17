@@ -1,6 +1,0 @@
-co\edu\uniandes\rest\hospital\resources\RestConfig.class
-co\edu\uniandes\rest\hospital\exceptions\PersonLogicException.class
-co\edu\uniandes\rest\hospital\resources\PersonResource.class
-co\edu\uniandes\rest\hospital\converters\PersonLogicExceptionMapper.class
-co\edu\uniandes\rest\hospital\dtos\PersonDTO.class
-co\edu\uniandes\rest\hospital\mocks\PersonLogicMock.class
