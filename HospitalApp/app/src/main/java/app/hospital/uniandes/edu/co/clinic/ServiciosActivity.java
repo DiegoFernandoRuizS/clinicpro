@@ -49,11 +49,12 @@ public class ServiciosActivity extends AppCompatActivity {
         final String documento = intent.getStringExtra("documento");
         final String nombres = intent.getStringExtra("nombres");
         final String apellidos = intent.getStringExtra("apellidos");
+        final String direccion = intent.getStringExtra("direccion");
         ArrayList<String> servicios= intent.getStringArrayListExtra("array");
 
         System.out.println("---Otra actividad---");
         System.out.println(servicios);
-        datosPaciente.setText("Los datos del paciente son: " + documento + "\n Nombres:" + nombres+" "+apellidos);
+        datosPaciente.setText("Los datos del paciente son: " + documento + "\n Nombres:" + nombres + " " + apellidos);
         servicioSeleccionadoView= (TextView) findViewById(R.id.textViewServicioSeleccionado);
         costo= (TextView) findViewById(R.id.textViewCosto);
 
@@ -111,8 +112,9 @@ public class ServiciosActivity extends AppCompatActivity {
                 intent.putExtra("documento",documento);
                 intent.putExtra("nombres",nombres);
                 intent.putExtra("apellidos",apellidos);
-                intent.putExtra("costo",costoServicio);
+                intent.putExtra("costo", costoServicio);
                 intent.putExtra("servicio",servicioSeleccionado);
+                intent.putExtra("direccion",direccion);
                 startActivity(intent);
             }
         });

@@ -77,6 +77,7 @@ public class PacienteActivity extends AppCompatActivity {
                 intent.putExtra("documento", editTextDocumento.getText().toString());
                 intent.putExtra("nombres", editTextNombres.getText().toString());
                 intent.putExtra("apellidos", editTextApellidos.getText().toString());
+                intent.putExtra("direccion", editTextDireccion.getText().toString());
                 intent.putStringArrayListExtra("array",nombresServicios);
                 startActivity(intent);
             }
