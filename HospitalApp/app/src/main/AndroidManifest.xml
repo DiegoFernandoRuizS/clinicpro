@@ -31,7 +31,7 @@
             android:label="@string/title_activity_servicios"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".PdfActivity"
+            android:name=".BillActivity"
             android:label="@string/title_activity_servicios"></activity>
 
     </application>

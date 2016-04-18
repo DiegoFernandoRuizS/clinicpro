@@ -21,13 +21,11 @@ public class PacienteActivity extends AppCompatActivity {
     PersonDTO myPerson;
     private Button btnBuscar;
     private Button btnServicios;
-    private Button pdf;
     public static EditText editTextDocumento;
     public static EditText editTextApellidos;
     public static EditText editTextNombres;
     public static EditText editTextDireccion;
     public static ArrayList<String> nombresServicios = new ArrayList<String>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +39,6 @@ public class PacienteActivity extends AppCompatActivity {
         editTextApellidos = (EditText) findViewById(R.id.editTextApellidos);
         editTextNombres = (EditText) findViewById(R.id.editTextNombres);
         editTextDireccion = (EditText) findViewById(R.id.editTextDireccion);
-        pdf= (Button) findViewById(R.id.pdf);
         editTextApellidos.setEnabled(false);
         editTextNombres.setEnabled(false);
         editTextDireccion.setEnabled(false);
@@ -58,20 +55,10 @@ public class PacienteActivity extends AppCompatActivity {
                         // "http://localhost:8080/hospital.logic/api/persons/",numero);
                         "http://10.0.2.2:8080/hospital.logic/api/persons/" + numero, numero);
                 new ConsumeRestPaciente().execute(url);
+
             }
         });
 
-        //
-        pdf.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Ir a pdf ",
-                        Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(v.getContext(), PdfActivity.class);
-                startActivity(intent);
-            }
-        });
 
         btnServicios.setOnClickListener(new OnClickListener() {
 
@@ -89,6 +76,7 @@ public class PacienteActivity extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), ServiciosActivity.class);
                 intent.putExtra("documento", editTextDocumento.getText().toString());
                 intent.putExtra("nombres", editTextNombres.getText().toString());
+                intent.putExtra("apellidos", editTextApellidos.getText().toString());
                 intent.putStringArrayListExtra("array",nombresServicios);
                 startActivity(intent);
             }

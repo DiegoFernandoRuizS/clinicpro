@@ -31,6 +31,8 @@ public class ServiciosActivity extends AppCompatActivity {
     public static ArrayList<ServiceDTO> fullServicios = new ArrayList<ServiceDTO>();
     public String servicioSeleccionado;
     private Button btnCalcular;
+    private Button btnGenerarRecibo;
+    private Double costoServicio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +41,19 @@ public class ServiciosActivity extends AppCompatActivity {
 
         datosPaciente = (TextView) findViewById(R.id.textViewDatosPaciente);
         btnCalcular= (Button) findViewById(R.id.btnCosto);
+        btnGenerarRecibo= (Button) findViewById(R.id.btnGenerar);
 
+        //Recibiendo datos de la anterior activity
         Intent intent = getIntent();
 
-        String documento = intent.getStringExtra("documento");
-        String nombres = intent.getStringExtra("nombres");
+        final String documento = intent.getStringExtra("documento");
+        final String nombres = intent.getStringExtra("nombres");
+        final String apellidos = intent.getStringExtra("apellidos");
         ArrayList<String> servicios= intent.getStringArrayListExtra("array");
 
         System.out.println("---Otra actividad---");
         System.out.println(servicios);
-        datosPaciente.setText("Los datos del paciente son: " + documento + " " + nombres);
+        datosPaciente.setText("Los datos del paciente son: " + documento + "\n Nombres:" + nombres+" "+apellidos);
         servicioSeleccionadoView= (TextView) findViewById(R.id.textViewServicioSeleccionado);
         costo= (TextView) findViewById(R.id.textViewCosto);
 
@@ -86,13 +91,29 @@ public class ServiciosActivity extends AppCompatActivity {
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (ServiceDTO servicio:fullServicios){
-                    if(Objects.equals(servicioSeleccionado,servicio.getName())){
-                        servicioSeleccionadoView.setText("Servicio: "+servicioSeleccionado);
-                        costo.setText("Costo: $"+servicio.getPrice());
+                for (ServiceDTO servicio : fullServicios) {
+                    if (Objects.equals(servicioSeleccionado, servicio.getName())) {
+                        servicioSeleccionadoView.setText("Servicio: " + servicioSeleccionado);
+                        costo.setText("Costo: $" + servicio.getPrice());
+                        costoServicio=servicio.getPrice();
                         System.out.println("Precio " + servicio.getPrice());
                     }
                 }
+            }
+        });
+
+        //Generando el recibo en pdf
+        btnGenerarRecibo.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), BillActivity.class);
+                intent.putExtra("documento",documento);
+                intent.putExtra("nombres",nombres);
+                intent.putExtra("apellidos",apellidos);
+                intent.putExtra("costo",costoServicio);
+                intent.putExtra("servicio",servicioSeleccionado);
+                startActivity(intent);
             }
         });
     }
