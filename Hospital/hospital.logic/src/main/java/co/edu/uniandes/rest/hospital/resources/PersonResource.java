@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.rest.hospital.resources;
 
+import co.edu.uniandes.rest.hospital.converters.PatientConverter;
 import co.edu.uniandes.rest.hospital.dtos.PersonDTO;
+import co.edu.uniandes.logic.hospital.ejbs.PatientLogic;
 import co.edu.uniandes.rest.hospital.exceptions.PersonLogicException;
 import co.edu.uniandes.rest.hospital.mocks.PersonLogicMock;
 
@@ -37,16 +39,23 @@ public class PersonResource {
 
 	@Inject
 	PersonLogicMock personLogic;
+        
+        @Inject
+        PatientLogic patientLogic;
 
 	/**
 	 * Obtiene el listado de personas. 
 	 * @return lista de personas
 	 * @throws PersonLogicException excepción retornada por la lógica  
 	 */
-    @GET
+    /*@GET
     public List<PersonDTO> getPersons() throws PersonLogicException {
         return personLogic.getPersons();
-    }
+    }*/
+/*    @GET
+    public List<PersonDTO> getPersons() throws PersonLogicException {
+        return PatientConverter 
+    }*/
 
     /**
      * Obtiene una person
@@ -54,10 +63,19 @@ public class PersonResource {
      * @return person encontrada
      * @throws PersonLogicException cuando la person no existe
      */
+        //mock
+        /*
     @GET
     @Path("{id: \\d+}")
     public PersonDTO getPerson(@PathParam("id") Long id) throws PersonLogicException {
         return personLogic.getPerson(id);
+    }*/
+    
+    @GET
+    @Path("{id: \\d+}")
+    public PersonDTO getPatient(@PathParam("id") Long id) {
+        System.out.println("Consume GET ");
+        return PatientConverter.converterEntity2DTO(patientLogic.getPatient(id));
     }
 
     /**
