@@ -1,5 +1,5 @@
 /*
- * PersonResource.java
+ * ServiceResource.java
  * Clase que representa el recurso "/services"
  * Implementa varios métodos para manipular los servicios
  */
@@ -50,9 +50,9 @@ public class ServiceResource {
 
     /**
      * Obtiene una servicio
-     * @param id identificador de la person
-     * @return person encontrada
-     * @throws PersonLogicException cuando la person no existe
+     * @param id identificador de la service
+     * @return service encontrada
+     * @throws ServiceLogicException cuando la service no existe
      */
     @GET
     @Path("{id: \\d+}")
@@ -60,6 +60,34 @@ public class ServiceResource {
         return serviceLogic.getService(id);
     }
     
-    
+     @POST
+    public ServiceDTO createService(ServiceDTO service) throws ServiceLogicException {
+        return serviceLogic.createService(service);
+    }
+
+    /**
+     * Actualiza los datos de una service
+     * @param id identificador de la service a modificar
+     * @param service service a modificar
+     * @return datos de la service modificada 
+     * @throws ServiceLogicException cuando no existe una service con el id suministrado
+     */
+    @PUT
+    @Path("{id: \\d+}")
+    public ServiceDTO updateService(@PathParam("id") Long id, ServiceDTO service) throws ServiceLogicException {
+        return serviceLogic.updateService(id, service);
+    }
+
+    /**
+     * Elimina los datos de una service
+     * @param id identificador de la service a eliminar
+     * @throws ServiceLogicException cuando no existe una service con el id suministrado
+     */
+    @DELETE
+    @Path("{id: \\d+}")
+    public void deleteService(@PathParam("id") Long id) throws ServiceLogicException {
+    	serviceLogic.deleteService(id);
+    }
+
     
 }

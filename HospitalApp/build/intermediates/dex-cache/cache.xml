@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\exploded-aar\com.android.support\design\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1aa5b025efe97f5006f5be16d6ca67c6c3c0c0d8">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.2.0_67ac5ef9500fbb8d63700b65baca69f20a11a224.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.2.0_dda0ab499ea31c4e03ee5778e2db3c204647a63c.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.2.0_2d1f157095d3ec9b7fe70116e83fb87e31dae161.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.0_b0fedd315499d7efd15255b55ce43c45bdbbd2ba.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.2.0_06a0f5e93db8ad1675f33bf198056feb5adc70d6.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\libs\internal_impl-23.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\internal_impl-23.2.0_a97631262422e8977d1a551532c8c2f6095768fb.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\libs\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\gson-2.2.4_31c1817034578e4529c7f57cf0193f16c3cde032.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.2.0_5c69daa6fad915e93a690b37ea05380fd7e36805.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\exploded-aar\org.sufficientlysecure\html-textview\1.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c1e4c0a86cd2875ad689907b06a3ed25b1f0c1b">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\org.sufficientlysecure-html-textview-1.5_f8b07a173dab301c7fd3262cdceed6b94541163e.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.0\support-annotations-23.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\support-annotations-23.2.0_0f472d8e15ab5814352a13093b9de589397bb6eb.jar" />
+    </item>
+    <item
+        jar="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\libs\DynamicPDF.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="adada22896abcbf849a9ffed02ac009d5bc32548">
+        <dex dex="C:\Users\diego\Documents\GitHub\clinicpro\HospitalApp\app\build\intermediates\pre-dexed\debug\DynamicPDF_a0ccbd254e8947ef27889b0634a93f6ca896c400.jar" />
+    </item>
+
+</items>

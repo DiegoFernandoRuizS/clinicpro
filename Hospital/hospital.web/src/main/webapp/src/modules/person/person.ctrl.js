@@ -5,7 +5,6 @@
 
     mod.controller("personCtrl", ["$scope", "$rootScope","personService", function ($scope,$rootScope, svc) {
 
-
             $scope.record = {}
             $rootScope.paciente={};
             $scope.currentRecord = {};
@@ -33,7 +32,10 @@
             }
             //Variables para el controlador
             this.readOnly = false;
+            //for CRUD
             this.editMode = false;
+            this.editModeSearch = true;
+            this.editModeList=false;
 
             this.changeTab = function (tab) {
                 $scope.tab = tab;
@@ -47,21 +49,31 @@
                     $rootScope.paciente= response.data;
                 }, responseError);
             };
+            
+            this.searchRecord=function (){
+                this.editModeSearch=false;
+                self.editModeList=true;
+            };
 
             //Metodos para el CRUD
-            /*this.createRecord = function () {
+            this.createRecord = function () {
              $scope.$broadcast("pre-create", $scope.currentRecord);
              this.editMode = true;
+             this.editModeSearch=true;
+             self.editModeList=true;
+            
              $scope.currentRecord = {};
              $scope.$broadcast("post-create", $scope.currentRecord);
              };
              
              this.editRecord = function (record) {
-             console.log("LLego? " + record.id);
+             console.log("LLego? " + record.cedula);
              $scope.$broadcast("pre-edit", $scope.currentRecord);
-             return svc.fetchRecord(record.id).then(function (response) {
+             return svc.fetchRecord(record.cedula).then(function (response) {
              $scope.currentRecord = response.data;
              self.editMode = true;
+               self.editModeList=true;
+             
              $scope.$broadcast("post-edit", $scope.currentRecord);
              return response;
              }, responseError);
@@ -71,7 +83,11 @@
              return svc.fetchRecords().then(function (response) {
              $scope.records = response.data;
              $scope.currentRecord = {};
+             
+             this.editModeSearch=true;
              self.editMode = false;
+             self.editModeList=false;
+           
              return response;
              }, responseError);
              };
@@ -83,13 +99,13 @@
              };
              
              this.deleteRecord = function (record) {
-             return svc.deleteRecord(record.id).then(function () {
+             return svc.deleteRecord(record.cedula).then(function () {
              self.fetchRecords();
              }, responseError);
              };
              
              this.fetchRecords();
-             */
+             
         }]);
 
 })(window.angular);

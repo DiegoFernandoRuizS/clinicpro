@@ -145,6 +145,8 @@ public class PersonLogicMock {
             	// modifica la persona
             	person.setId(updatedPerson.getId());
                 person.setName(updatedPerson.getName());
+                person.setSurname(updatedPerson.getSurname());
+                person.setAddress(updatedPerson.getAddress());
                 
                 // retorna la persona modificada
             	logger.info("Modificando persona " + person);
@@ -167,7 +169,7 @@ public class PersonLogicMock {
     	
     	// busca la persona con el id suministrado
         for (PersonDTO person : persons) {
-            if (Objects.equals(person.getId(), id)) {
+            if (Objects.equals(person.getCedula(), id)) {
             	
             	// elimina la persona
             	logger.info("eliminando persona " + person);

@@ -30,6 +30,7 @@
             //Variables para el controlador
             this.readOnly = false;
             this.editMode = false;
+            this.editModeServices = true;
 
             this.changeTab = function (tab) {
                 $scope.tab = tab;
@@ -69,6 +70,67 @@
                 window.frames["print_frame"].window.focus();
                 window.frames["print_frame"].window.print();
             }
+            
+            //
+            this.listServices=function ()
+            {
+                self.editModeServices=false;
+                             self.editModeList=true;
+
+                
+            };
+            
+            //-------
+             //Metodos para el CRUD
+            //Metodos para el CRUD
+            this.createRecord = function () {
+             $scope.$broadcast("pre-create", $scope.currentRecord);
+             this.editMode = true;
+             this.editModeServices=true;
+             self.editModeList=true;
+            
+             $scope.currentRecord = {};
+             $scope.$broadcast("post-create", $scope.currentRecord);
+             };
+             
+             this.editRecord = function (record) {
+             console.log("LLego? " + record.id);
+             $scope.$broadcast("pre-edit", $scope.currentRecord);
+             return svc.fetchRecord(record.id).then(function (response) {
+             $scope.currentRecord = response.data;
+             self.editMode = true;
+             
+             $scope.$broadcast("post-edit", $scope.currentRecord);
+             return response;
+             }, responseError);
+             };
+             
+             this.fetchRecords = function () {
+             return svc.fetchRecords().then(function (response) {
+             $scope.records = response.data;
+             $scope.currentRecord = {};
+             
+             this.editModeServices=true;
+             self.editMode = false;
+             self.editModeList=false;
+           
+             return response;
+             }, responseError);
+             };
+             
+             this.saveRecord = function () {
+             return svc.saveRecord($scope.currentRecord).then(function () {
+             self.fetchRecords();
+             }, responseError);
+             };
+             
+             this.deleteRecord = function (record) {
+             return svc.deleteRecord(record.id).then(function () {
+             self.fetchRecords();
+             }, responseError);
+             };
+             
+             this.fetchRecords();
 
         }]);
 
