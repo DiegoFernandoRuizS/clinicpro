@@ -93,6 +93,7 @@ public abstract class PersonConverter {
     private static PersonEntity basicDTO2Entity(PersonDTO dto) {
         if (dto != null) {
             PersonEntity entity = new PersonEntity();
+           // entity.setId(dto.getId());
             entity.setCedula(dto.getCedula());
             entity.setName(dto.getName());
             entity.setSurname(dto.getSurname());
