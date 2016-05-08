@@ -29,7 +29,7 @@
         </dependency>
         <dependency>
             <groupId>co.edu.uniandes.hospital</groupId>
-            <artifactId>hospital-logic</artifactId>
+            <artifactId>hospital.logic</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         
