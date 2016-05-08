@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.rest.hospital.resources;
 
+import co.edu.uniandes.hospital.api.IServiceLogic;
+import co.edu.uniandes.hospital.entities.ServiceEntity;
+import co.edu.uniandes.rest.hospital.converters.ServiceConverter;
 import co.edu.uniandes.rest.hospital.dtos.ServiceDTO;
 import co.edu.uniandes.rest.hospital.exceptions.ServiceLogicException;
 import co.edu.uniandes.rest.hospital.mocks.ServiceLogicMock;
@@ -36,7 +39,7 @@ import javax.ws.rs.Produces;
 public class ServiceResource {
 
 	@Inject
-	ServiceLogicMock serviceLogic;
+	IServiceLogic serviceLogic;
 
 	/**
 	 * Obtiene el listado de servicios. 
@@ -45,7 +48,7 @@ public class ServiceResource {
 	 */
     @GET
     public List<ServiceDTO> getServices() throws ServiceLogicException {
-        return serviceLogic.getServices();
+        return ServiceConverter.listEntity2DTO(serviceLogic.getServices());
     }
 
     /**
@@ -57,12 +60,13 @@ public class ServiceResource {
     @GET
     @Path("{id: \\d+}")
     public ServiceDTO getService(@PathParam("id") Long id) throws ServiceLogicException {
-        return serviceLogic.getService(id);
+        return ServiceConverter.fullEntity2DTO(serviceLogic.getService(id));
     }
     
-     @POST
+    @POST
     public ServiceDTO createService(ServiceDTO service) throws ServiceLogicException {
-        return serviceLogic.createService(service);
+        ServiceEntity entity = ServiceConverter.fullDTO2Entity(service);
+        return ServiceConverter.fullEntity2DTO(serviceLogic.createService(entity));
     }
 
     /**
@@ -75,7 +79,11 @@ public class ServiceResource {
     @PUT
     @Path("{id: \\d+}")
     public ServiceDTO updateService(@PathParam("id") Long id, ServiceDTO service) throws ServiceLogicException {
-        return serviceLogic.updateService(id, service);
+        ServiceEntity entity = ServiceConverter.fullDTO2Entity(service);
+        entity.setId(id);
+        ServiceEntity oldEntity = serviceLogic.getService(id);
+        //entity.setBooks(oldEntity.getBooks());
+        return ServiceConverter.fullEntity2DTO(serviceLogic.updateService(entity));
     }
 
     /**

@@ -41,9 +41,8 @@
                 $scope.tab = tab;
             };
 
-            //Consultar una persona
+            //Consultar una persona para asignar servico
             this.getRecord = function (record) {
-                console.log("El id? " + record.cedula);
                 return svc.fetchRecord(record.cedula).then(function (response) {
                     $scope.currentRecord = response.data;
                     $rootScope.paciente= response.data;
@@ -67,9 +66,9 @@
              };
              
              this.editRecord = function (record) {
-             console.log("LLego? " + record.cedula);
+             console.log("LLego? " + record.id);
              $scope.$broadcast("pre-edit", $scope.currentRecord);
-             return svc.fetchRecord(record.cedula).then(function (response) {
+             return svc.fetchRecord(record.id).then(function (response) {
              $scope.currentRecord = response.data;
              self.editMode = true;
                self.editModeList=true;
@@ -99,7 +98,7 @@
              };
              
              this.deleteRecord = function (record) {
-             return svc.deleteRecord(record.cedula).then(function () {
+             return svc.deleteRecord(record.id).then(function () {
              self.fetchRecords();
              }, responseError);
              };
