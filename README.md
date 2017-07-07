@@ -1,6 +1,6 @@
 # clinicpro - maven project
 
-##The project is included as follows:
+## The project is included as follows:
 
 master branch:
    maven project with two modules:
